@@ -24,6 +24,6 @@ color: #FFFFFF;
   width: 100%;
 }
 
-.counter {
-  max-width: 140ch;
+.negative {
+  color: red;
 }
