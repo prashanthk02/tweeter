@@ -24,3 +24,11 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ .container {
+   width: 90%;
+   margin: auto;
+   background-color: #f4f1ec;
+
+
+ }
