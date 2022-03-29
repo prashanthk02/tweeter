@@ -1,0 +1,29 @@
+.new-tweet {
+display: flex;
+}
+
+#tweet-text {
+  border: none;
+  border-bottom: 3px solid black;
+  background-color: #f4f1ec;
+  width: 100%;
+}
+
+.tweet-btn {
+background-color: #4056A1;
+color: #FFFFFF;
+}
+
+.compose-caption {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+}
+
+.tweet-form {
+  width: 100%;
+}
+
+.counter {
+  max-width: 140ch;
+}

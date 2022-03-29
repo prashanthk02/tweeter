@@ -29,6 +29,6 @@ body {
    width: 90%;
    margin: auto;
    background-color: #f4f1ec;
-
-
+   display: flex;
+   flex-direction: column;
  }
