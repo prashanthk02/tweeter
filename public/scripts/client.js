@@ -3,7 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// $(document).ready(function () {
   const tweetData = [
     {
       "user": {
@@ -65,7 +64,6 @@ const createTweetElement = function (tweet) {
           </footer>
         </article>
         `
-
         return tweets;
 };
 
@@ -76,10 +74,6 @@ const renderTweets = function (tweetData) {
    $('#tweet-box').append($tweet);
   }
 };
-
-// renderTweets(tweetData);
-// })
-
 
 // document on ready short hand syntax
 $(() => {
