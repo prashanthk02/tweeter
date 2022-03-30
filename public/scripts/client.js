@@ -77,5 +77,17 @@ const renderTweets = function (tweetData) {
 
 // document on ready short hand syntax
 $(() => {
+  $('.tweet-btn').submit(evt => {
+  evt.preventDefault();
+  
+    $.ajax({
+      url: '/tweets',
+      dataType: 'text',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded',
+      data: $('.tweet-text').serialize(),
+    })
+  
+  })
   renderTweets(tweetData);
 })
