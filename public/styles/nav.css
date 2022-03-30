@@ -1,6 +1,8 @@
 .nav-bar {
   height: 120px;
   width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: #4056A1;
   color: #FFFFFF;
   display: flex;

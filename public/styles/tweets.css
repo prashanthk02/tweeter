@@ -17,7 +17,6 @@ box-shadow: 6px 6px 3px gray;
   flex-direction: column;
   justify-content: space-between;
   margin: 15px;
-  margin-top: -5px;
   border-bottom: 4px solid black;
 }
 
@@ -32,16 +31,18 @@ box-shadow: 6px 6px 3px gray;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 10px;
+  gap: 10px
 }
 
 .avatar img {
-  width: 50px;
+  width: 40px;
 }
 
-.avatar > * {
-  margin: 5px;
+.user-handle {
+  opacity: 0.5;
+  font-weight: bold;
 }
+
 /* tweets box footer */
 .tweet footer {
   display: flex;
