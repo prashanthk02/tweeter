@@ -55,7 +55,7 @@ const createTweetElement = function (tweet) {
             <p>${tweet.content.text}</p>
           </header>
           <footer>
-            <span>${tweet.created_at} ago</span>
+            <span>${jQuery.timeago(tweet.created_at)}</span>
             <div>
              <button><i class="fa-solid fa-flag"></i></button>
             <button><i class="fa-solid fa-retweet"></i></button>
