@@ -6,7 +6,15 @@
   const tweetData = [];
 
 //helper functions
-//1.applies css to individual tweet object
+
+//to prevent xss with escape function
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+//applies css to individual tweet object
 const createTweetElement = function (tweet) {
   const tweets = `
   <article class="tweet">
@@ -18,7 +26,7 @@ const createTweetElement = function (tweet) {
               </div>
               <span class="user-handle">${tweet.user.handle}</span>
             </div>
-            <p>${tweet.content.text}</p>
+            <p>${escape(tweet.content.text)}</p>
           </header>
           <footer>
             <span>${jQuery.timeago(tweet.created_at)}</span>
@@ -33,7 +41,7 @@ const createTweetElement = function (tweet) {
         return tweets;
 };
 
-//2.loop through entire tweet data and appends it to the tweet box section in html
+//loop through entire tweet data and appends it to the tweet box section in html
 const renderTweets = function (tweetData) {
   for (let tweet of tweetData) {
    let $tweet = createTweetElement(tweet);
@@ -41,6 +49,7 @@ const renderTweets = function (tweetData) {
   }
 };
 
+//to get tweets from tweets file
 const loadTweets = function () {
   $.ajax("/tweets", {method: 'GET'})
     .then(data => renderTweets(data))
