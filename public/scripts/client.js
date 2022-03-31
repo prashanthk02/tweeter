@@ -3,41 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-  const tweetData = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-{
-  "user": {
-    "name": "Newton3",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac3"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-}
-];
+  const tweetData = [];
 
 //helper functions
 //1.applies css to individual tweet object
@@ -71,23 +37,32 @@ const createTweetElement = function (tweet) {
 const renderTweets = function (tweetData) {
   for (let tweet of tweetData) {
    let $tweet = createTweetElement(tweet);
-   $('#tweet-box').append($tweet);
+   $('#tweet-box').prepend($tweet);
   }
 };
 
+const loadTweets = function () {
+  $.ajax("/tweets", {method: 'GET'})
+    .then(data => renderTweets(data))
+}
+
 // document on ready short hand syntax
 $(() => {
-  $('.tweet-btn').submit(evt => {
+  $('.tweet-form').on('submit', (evt) => {
   evt.preventDefault();
   
     $.ajax({
+      type: 'POST',
       url: '/tweets',
       dataType: 'text',
-      type: 'post',
-      contentType: 'application/x-www-form-urlencoded',
-      data: $('.tweet-text').serialize(),
+      data: $('#tweet-text').serialize()
     })
-  
+    .then(() => {
+      $('#tweet-text').val('');
+    })
+
+    $.ajax("/tweets", {method: 'GET'})
+    .then(data => renderTweets([data[data.length - 1]]))
   })
-  renderTweets(tweetData);
+  loadTweets();
 })
