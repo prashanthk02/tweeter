@@ -32,3 +32,21 @@ body {
    display: flex;
    flex-direction: column;
  }
+
+  @media only screen and (min-width: 768px) {
+  .container {
+    float: right;
+    width: 60%;
+    margin-top: 6em;
+    }
+  }
+  
+  @media only screen and (max-width: 360px) {
+    body {
+      min-height: 80vh;
+      font-size: 16px;
+    }
+    nav > .new-tweet {
+      display: none;
+    }
+  }

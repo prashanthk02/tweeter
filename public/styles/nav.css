@@ -3,14 +3,13 @@
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #4056A1;
-  color: #FFFFFF;
+  background-color: transparent;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
-  z-index: 1;
 }
 
 .app-tittle {
@@ -29,7 +28,7 @@
 
 .angle-btn {
   color: rgb(255, 0, 0);
-  background-color: #4056A1;
+  background-color: transparent;
   border: 0px;
 
   /*animation*/
@@ -44,4 +43,10 @@
 @keyframes pippo {
   0% {top: 60%}
   100% {top:70%}
+}
+
+@media only screen and (min-width: 768px) {
+  .nav-bar {
+    background-color: #4056A1;
+  }
 }
