@@ -51,16 +51,23 @@ $(() => {
   $('.tweet-form').on('submit', (evt) => {
   evt.preventDefault();
   
-    $.ajax({
-      type: 'POST',
-      url: '/tweets',
-      dataType: 'text',
-      data: $('#tweet-text').serialize()
-    })
-    .then(() => {
-      $('#tweet-text').val('');
-    })
-
+  const input = $('#tweet-text').val();
+  if (input === "" || $.trim(input).length === 0) {
+    alert("Tweet can't be blank")
+  } else if (input.length > 140) {
+    alert("Tweet limit exceeded!");
+  } else {
+      $.ajax({
+        type: 'POST',
+        url: '/tweets',
+        dataType: 'text',
+        data: $('#tweet-text').serialize()
+      })
+      .then(() => {
+        $('#tweet-text').val('');
+      })
+    }
+    
     $.ajax("/tweets", {method: 'GET'})
     .then(data => renderTweets([data[data.length - 1]]))
   })
