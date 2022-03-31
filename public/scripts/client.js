@@ -59,12 +59,22 @@ const loadTweets = function () {
 $(() => {
   $('.tweet-form').on('submit', (evt) => {
   evt.preventDefault();
-  
+  //condition added to post only valid tweets and display error msg
   const input = $('#tweet-text').val();
   if (input === "" || $.trim(input).length === 0) {
-    alert("Tweet can't be blank")
+    $(".error-msg").text("⚠️  Tweet cannot be left blank")
+    $(".error-box").slideDown();
+    setTimeout(() => {
+      $(".error-box").slideUp();
+    }, 3000);
+
   } else if (input.length > 140) {
-    alert("Tweet limit exceeded!");
+    $(".error-msg").text("⚠️  Tweet limit exceeded! Max: 140 characters")
+    $(".error-box").slideDown();
+    setTimeout(() => {
+      $(".error-box").slideUp();
+    }, 3000);
+
   } else {
       $.ajax({
         type: 'POST',
@@ -74,11 +84,13 @@ $(() => {
       })
       .then(() => {
         $('#tweet-text').val('');
+        $('.counter').text(140);
+
+        $.ajax("/tweets", {method: 'GET'})
+          .then(data => renderTweets([data[data.length - 1]]));
       })
     }
     
-    $.ajax("/tweets", {method: 'GET'})
-    .then(data => renderTweets([data[data.length - 1]]))
   })
   loadTweets();
 })
