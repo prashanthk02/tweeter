@@ -23,6 +23,7 @@
     width: 30%;
     float: left;
     margin: 8em 1em 0 1em;
+    position: fixed;
   }
 
   .header img {
