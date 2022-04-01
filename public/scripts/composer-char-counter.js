@@ -7,7 +7,7 @@ $(document).ready(function() {
     if (remainingCount < 0) {
       counter.addClass("negative");
     } else {
-      counter.removeClass("negative")
+      counter.removeClass("negative");
     }
-  })
+  });
 });

@@ -3,19 +3,19 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-  const tweetData = [];
+const tweetData = [];
 
 //helper functions
 
 //to prevent xss with escape function
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
 //applies css to individual tweet object
-const createTweetElement = function (tweet) {
+const createTweetElement = function(tweet) {
   const tweets = `
   <article class="tweet">
           <header>
@@ -37,60 +37,60 @@ const createTweetElement = function (tweet) {
             </div>
           </footer>
         </article>
-        `
-        return tweets;
+        `;
+  return tweets;
 };
 
 //loop through entire tweet data and appends it to the tweet box section in html
-const renderTweets = function (tweetData) {
+const renderTweets = function(tweetData) {
   for (let tweet of tweetData) {
-   let $tweet = createTweetElement(tweet);
-   $('#tweet-box').prepend($tweet);
+    let $tweet = createTweetElement(tweet);
+    $('#tweet-box').prepend($tweet);
   }
 };
 
 //to get tweets from tweets file
-const loadTweets = function () {
+const loadTweets = function() {
   $.ajax("/tweets", {method: 'GET'})
-    .then(data => renderTweets(data))
-}
+    .then(data => renderTweets(data));
+};
 
 // document on ready short hand syntax
 $(() => {
   $('.tweet-form').on('submit', (evt) => {
-  evt.preventDefault();
-  //condition added to post only valid tweets and display error msg
-  const input = $('#tweet-text').val();
-  if (input === "" || $.trim(input).length === 0) {
-    $(".error-msg").text("⚠️  Tweet cannot be left blank")
-    $(".error-box").slideDown();
-    setTimeout(() => {
-      $(".error-box").slideUp();
-    }, 3000);
+    evt.preventDefault();
+    //condition added to post only valid tweets and display error msg
+    const input = $('#tweet-text').val();
+    if (input === "" || $.trim(input).length === 0) {
+      $(".error-msg").text("⚠️  Tweet cannot be left blank");
+      $(".error-box").slideDown();
+      setTimeout(() => {
+        $(".error-box").slideUp();
+      }, 3000);
 
-  } else if (input.length > 140) {
-    $(".error-msg").text("⚠️  Tweet limit exceeded! Max: 140 characters")
-    $(".error-box").slideDown();
-    setTimeout(() => {
-      $(".error-box").slideUp();
-    }, 3000);
+    } else if (input.length > 140) {
+      $(".error-msg").text("⚠️  Tweet limit exceeded! Max: 140 characters");
+      $(".error-box").slideDown();
+      setTimeout(() => {
+        $(".error-box").slideUp();
+      }, 3000);
 
-  } else {
+    } else {
       $.ajax({
         type: 'POST',
         url: '/tweets',
         dataType: 'text',
         data: $('#tweet-text').serialize()
       })
-      .then(() => {
-        $('#tweet-text').val('');
-        $('.counter').text(140);
+        .then(() => {
+          $('#tweet-text').val('');
+          $('.counter').text(140);
 
-        $.ajax("/tweets", {method: 'GET'})
-          .then(data => renderTweets([data[data.length - 1]]));
-      })
+          $.ajax("/tweets", {method: 'GET'})
+            .then(data => renderTweets([data[data.length - 1]]));
+        });
     }
     
-  })
+  });
   loadTweets();
-})
+});

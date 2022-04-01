@@ -38,9 +38,14 @@ box-shadow: 6px 6px 3px gray;
   width: 40px;
 }
 
+.avatar > span {
+  font-size: 20px;
+}
+
 .user-handle {
   opacity: 0.5;
   font-weight: bold;
+  font-size: 20px;
 }
 
 /* tweets box footer */
