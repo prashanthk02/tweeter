@@ -1,8 +1,8 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
-Tweeter is built using jQuery, HTML5 and CSS3.
-Displays an error message if tweet is blank or exceeds 140 characters.
+Tweeter is a simple, single-page Twitter clone,
+built using jQuery, HTML5 and CSS3.
+App displays an error message if tweet is blank or exceeds 140 characters.
 App UI changes according to the screen size, breakout points are defined at 360px or less for mobile devices, less than 768px for tablets and above 768 px for higher resolution tablets and desktops.
 
 ## Getting Started
@@ -17,3 +17,9 @@ App UI changes according to the screen size, breakout points are defined at 360p
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+!["Screenshot of home page in desktop"](https://github.com/prashanthk02/tweeter/blob/master/docs/desktop.png?raw=true)
+!["Screenshot of home page in tablet"](https://github.com/prashanthk02/tweeter/blob/master/docs/tablet.png?raw=true)
+!["Screenshot of tweets in mobile"](https://github.com/prashanthk02/tweeter/blob/master/docs/mobile.png?raw=true)
+!["Screenshot of an error message"](https://github.com/prashanthk02/tweeter/blob/master/docs/error.png?raw=true)
