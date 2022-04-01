@@ -30,7 +30,6 @@ color: #FFFFFF;
 
 .error-box {
   width: 100%;
-  border: 5px solid rgb(160, 160, 12);
   font-size: x-large;
   color: red;
   font-style: italic;

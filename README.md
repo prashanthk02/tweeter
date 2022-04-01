@@ -1,8 +1,9 @@
 # Tweeter Project
 
 Tweeter is a simple, single-page Twitter clone.
-
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
+Tweeter is built using jQuery, HTML5 and CSS3.
+Displays an error message if tweet is blank or exceeds 140 characters.
+App UI changes according to the screen size, breakout points are defined at 360px or less for mobile devices, less than 768px for tablets and above 768 px for higher resolution tablets and desktops.
 
 ## Getting Started
 
